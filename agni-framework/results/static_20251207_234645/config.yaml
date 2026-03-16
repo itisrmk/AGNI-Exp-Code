@@ -1,0 +1,77 @@
+adaptation:
+  continual:
+    enabled: true
+    ewc_gamma: 0.9
+    ewc_lambda: 1000
+    hyper_buffer_fraction: 0.2
+    hypo_buffer_fraction: 0.2
+    replay_buffer_size: 200
+    replay_ratio: 0.5
+    update_interval_days: 1
+    update_steps: 50
+  periodic:
+    enabled: true
+    interval_days: 7
+    retrain_window_days: 7
+  static:
+    enabled: true
+data:
+  data_dir: ../OhioT1DM/archive
+  dataset: ohio
+  prediction_horizons:
+  - 3
+  - 6
+  - 12
+  train_split: 0.5
+  val_split: 0.2
+  window_size: 24
+device: mps
+evaluation:
+  clinical_metrics:
+  - clarke_grid
+  - hypo_sensitivity
+  - hypo_specificity
+  metrics:
+  - mae
+  - rmse
+  - correlation
+models:
+  lstm:
+    dropout: 0.2
+    hidden_size: 64
+    num_layers: 2
+  tcn:
+    dropout: 0.2
+    kernel_size: 3
+    num_channels:
+    - 32
+    - 32
+    - 32
+    - 32
+  transformer:
+    d_model: 64
+    dim_feedforward: 128
+    dropout: 0.1
+    nhead: 4
+    num_layers: 1
+preprocessing:
+  max_gap_minutes: 30
+  max_glucose: 600
+  min_glucose: 20
+  normalize: true
+seed: 42
+training:
+  batch_size: 32
+  early_stopping_patience: 10
+  learning_rate: 0.001
+  loss: mse
+  max_epochs: 100
+  optimizer: adam
+visualization:
+  color_palette:
+  - '#2ecc71'
+  - '#3498db'
+  - '#e74c3c'
+  figure_dpi: 300
+  figure_format: pdf
+  style: seaborn-v0_8-whitegrid

@@ -1,0 +1,7 @@
+{
+  "lstm": {
+    "559": {
+      "error": "__init__() got an unexpected keyword argument 'train_loader'"
+    }
+  }
+}

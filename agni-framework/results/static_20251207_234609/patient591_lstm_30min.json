@@ -1,0 +1,86 @@
+{
+  "patient_id": 591,
+  "model_type": "lstm",
+  "horizon_minutes": 30,
+  "n_train": 1581,
+  "n_val": 395,
+  "n_test": 1977,
+  "epochs_trained": 20,
+  "final_train_loss": 0.15308714442186006,
+  "final_val_loss": 0.28603902828844285,
+  "metrics": {
+    "mae": 24.32260412619363,
+    "rmse": 35.0470944445279,
+    "mse": 1228.2988290036585,
+    "mape": 18.645298080361265,
+    "correlation": 0.7426005868052677,
+    "r_squared": 0.5101703671292078,
+    "mean_error": 1.655020929561483,
+    "std_error": 35.00799529716564
+  },
+  "clinical": {
+    "clarke_grid": {
+      "A": 68.43702579666162,
+      "B": 25.847243297926152,
+      "C": 4.855842185128983,
+      "D": 0.8598887202832575,
+      "E": 0.0,
+      "A+B": 94.28426909458777
+    },
+    "hypo_detection": {
+      "sensitivity": 4.411764705882353,
+      "specificity": 99.84284965950759,
+      "precision": 50.0,
+      "false_alarm_rate": 0.15715034049240684,
+      "miss_rate": 95.58823529411765,
+      "f1_score": 8.10810810810811,
+      "n_actual_hypo": 68,
+      "n_predicted_hypo": 6,
+      "true_positives": 3,
+      "false_negatives": 65,
+      "false_positives": 3,
+      "true_negatives": 1906
+    },
+    "hyper_detection": {
+      "sensitivity": 71.51394422310757,
+      "specificity": 91.38983050847457,
+      "precision": 73.86831275720165,
+      "false_alarm_rate": 8.610169491525422,
+      "miss_rate": 28.486055776892428,
+      "f1_score": 72.67206477732793,
+      "n_actual_hyper": 502,
+      "n_predicted_hyper": 486
+    },
+    "time_in_range_actual": {
+      "time_below_54": 1.112797167425392,
+      "time_below_70": 3.43955488113303,
+      "time_in_range": 71.16843702579666,
+      "time_above_180": 25.392008093070306,
+      "time_above_250": 3.793626707132018
+    },
+    "time_in_range_predicted": {
+      "time_below_54": 0.0,
+      "time_below_70": 0.30349013657056145,
+      "time_in_range": 75.11380880121396,
+      "time_above_180": 24.582701062215477,
+      "time_above_250": 3.5912999494183104
+    }
+  },
+  "patient_stats": {
+    "n_readings": 10847,
+    "duration_days": 44,
+    "mean_glucose": 156.0220337420485,
+    "std_glucose": 58.03978738975976,
+    "min_glucose": 40.0,
+    "max_glucose": 397.0,
+    "time_in_range": 64.20208352539872,
+    "time_below_70": 3.6968747119019083,
+    "time_above_180": 32.10104176269936,
+    "n_meals": 212,
+    "n_bolus": 261
+  },
+  "normalizer_params": {
+    "mean": 161.35886491485604,
+    "std": 57.768787537199145
+  }
+}

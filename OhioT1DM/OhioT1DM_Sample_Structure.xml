@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+OhioT1DM Dataset - Sample XML Structure
+This is a SAMPLE demonstrating the structure based on code analysis.
+Actual data requires Data Use Agreement from smarthealth.cs.ohio.edu
+-->
+<patient_data>
+    <!-- Continuous Glucose Monitoring (CGM) Readings -->
+    <!-- Each glucose_level element represents a continuous recording segment -->
+    <glucose_level>
+        <event ts="01-01-2024 00:00:00" value="142.3"/>
+        <event ts="01-01-2024 00:05:00" value="138.7"/>
+        <event ts="01-01-2024 00:10:00" value="135.2"/>
+        <event ts="01-01-2024 00:15:00" value="131.8"/>
+        <event ts="01-01-2024 00:20:00" value="128.5"/>
+        <event ts="01-01-2024 00:25:00" value="125.3"/>
+        <event ts="01-01-2024 00:30:00" value="122.1"/>
+        <!-- ... continuing every 5 minutes ... -->
+    </glucose_level>
+
+    <!-- If there's a gap in CGM data, a new glucose_level segment starts -->
+    <glucose_level>
+        <event ts="01-01-2024 08:00:00" value="95.4"/>
+        <event ts="01-01-2024 08:05:00" value="98.2"/>
+        <event ts="01-01-2024 08:10:00" value="102.6"/>
+        <!-- ... -->
+    </glucose_level>
+
+    <!-- Basal Insulin Rate Changes -->
+    <basal>
+        <event ts="01-01-2024 06:00:00" value="1.0"/>  <!-- Normal basal rate -->
+        <event ts="01-01-2024 08:00:00" value="1.2"/>  <!-- Increased for breakfast -->
+        <event ts="01-01-2024 12:00:00" value="0.0"/>  <!-- Suspended during exercise -->
+        <event ts="01-01-2024 13:00:00" value="1.0"/>  <!-- Resumed normal rate -->
+    </basal>
+
+    <!-- Bolus Insulin Doses (typically before meals) -->
+    <bolus>
+        <event ts="01-01-2024 08:00:00" dose="6.5" type="normal"/>  <!-- Breakfast bolus -->
+        <event ts="01-01-2024 12:30:00" dose="8.0" type="normal"/>  <!-- Lunch bolus -->
+        <event ts="01-01-2024 14:00:00" dose="2.5" type="normal"/>  <!-- Correction bolus -->
+        <event ts="01-01-2024 18:30:00" dose="7.5" type="normal"/>  <!-- Dinner bolus -->
+    </bolus>
+
+    <!-- Meal Carbohydrate Estimates -->
+    <meal>
+        <event ts="01-01-2024 08:00:00" carbs="45" type="breakfast"/>
+        <event ts="01-01-2024 10:30:00" carbs="15" type="snack"/>
+        <event ts="01-01-2024 12:30:00" carbs="60" type="lunch"/>
+        <event ts="01-01-2024 15:00:00" carbs="20" type="snack"/>
+        <event ts="01-01-2024 18:30:00" carbs="55" type="dinner"/>
+    </meal>
+
+    <!-- Sleep Events with Quality Assessment -->
+    <sleep>
+        <!-- Sleep start -->
+        <event ts="31-12-2023 23:15:00" quality="3"/>  <!-- Good sleep -->
+        <!-- Sleep end -->
+        <event ts="01-01-2024 07:00:00" quality="3"/>
+
+        <event ts="01-01-2024 23:00:00" quality="2"/>  <!-- Fair sleep -->
+        <event ts="02-01-2024 06:30:00" quality="2"/>
+    </sleep>
+
+    <!-- Work Events with Physical Intensity -->
+    <work>
+        <!-- Arrive at work -->
+        <event ts="01-01-2024 09:00:00" intensity="5"/>
+        <!-- Leave work -->
+        <event ts="01-01-2024 17:00:00" intensity="5"/>
+
+        <event ts="02-01-2024 09:00:00" intensity="7"/>  <!-- More intense work day -->
+        <event ts="02-01-2024 18:00:00" intensity="7"/>
+    </work>
+
+    <!-- Exercise Events -->
+    <exercise>
+        <event ts="01-01-2024 06:30:00" intensity="8" duration="45"/>  <!-- Morning run -->
+        <event ts="01-01-2024 17:30:00" intensity="6" duration="30"/>  <!-- Evening walk -->
+    </exercise>
+
+    <!-- Stress Events -->
+    <stress>
+        <event ts="01-01-2024 14:00:00" level="7"/>  <!-- High stress at work -->
+        <event ts="01-01-2024 20:00:00" level="3"/>  <!-- Low stress at home -->
+    </stress>
+
+    <!-- Illness Events -->
+    <illness>
+        <event ts="05-01-2024 08:00:00" type="cold" severity="moderate"/>
+        <event ts="07-01-2024 08:00:00" type="recovered"/>
+    </illness>
+
+    <!-- Hypoglycemic Events (Low Blood Sugar) -->
+    <hypo_event>
+        <event ts="01-01-2024 11:30:00" value="65"/>  <!-- BG dropped to 65 mg/dL -->
+    </hypo_event>
+
+    <!-- Self-Monitoring Blood Glucose (Finger Stick Readings) -->
+    <finger_stick>
+        <event ts="01-01-2024 08:00:00" value="118"/>
+        <event ts="01-01-2024 12:30:00" value="142"/>
+        <event ts="01-01-2024 18:30:00" value="135"/>
+    </finger_stick>
+
+    <!--
+    NOTES ON THE STRUCTURE:
+
+    1. Timestamps: Format is "%d-%m-%Y %H:%M:%S" (e.g., "01-01-2024 14:30:00")
+    2. CGM Values: Blood glucose in mg/dL
+    3. Insulin: Units (U)
+    4. Carbs: Grams (g)
+    5. Timing: CGM every 5 minutes, other events as they occur
+
+    6. Typical Day Structure:
+       - ~288 CGM readings per day (24 hours × 60 minutes / 5 minutes)
+       - 3-4 meals with corresponding carb counts
+       - 3-4 bolus insulin doses (aligned with meals + corrections)
+       - Basal rate changes as needed
+       - Lifestyle events (sleep, work, exercise) as they occur
+
+    7. Data Completeness:
+       - CGM may have gaps (represented as separate glucose_level segments)
+       - Not all events occur every day
+       - Self-reported data depends on patient compliance
+
+    8. For 8 weeks of data:
+       - Expected ~16,000 CGM readings per patient
+       - Hundreds of meal/insulin events
+       - Variable lifestyle events
+    -->
+</patient_data>
